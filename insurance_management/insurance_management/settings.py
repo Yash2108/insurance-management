@@ -76,11 +76,24 @@ WSGI_APPLICATION = 'insurance_management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Insurance',
+        'USER': 'postgres',
+        'PASSWORD': 'yashjain',
+        'HOST': 'localhost'
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'insurance_management',
+#         'USER': 'user1',
+#         'PASSWORD': 'pass1',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -120,3 +133,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
