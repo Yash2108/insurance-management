@@ -21,6 +21,17 @@
                     <input class="btn btn-danger" type="submit" value="Upoad">
                 </form>
             </div>
+            <div class="row">
+            {% for x in insurance %}
+                <div class="col-sm-4">
+                    <div class="card m-2">
+                        <img src="{{ x.photo.url }}" alt="" class="card-img-top"
+                            >
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
         </div>
     </body>
 </html>
