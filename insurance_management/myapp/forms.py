@@ -21,16 +21,27 @@ class InsuranceForm(forms.ModelForm):
     class Meta:
         model = Insurances
         fields = '__all__'
-        labels = {'photo':''}
+        labels = {
+            'name' : 'Name',
+            'policyID' : 'Policy ID',
+            'dateOfCommencement' : 'Date of Commencement', 
+            'dateOfMaturity' : 'Date of Maturity',
+            'expiryType' : 'Expirty Type',
+            'insuranceType' : 'Insurance Type', 
+            'aadhar' : 'Upload Aadhar Card Photo',
+            'installmentAmount' : 'Installment Amount',
+            'maturityAmount' : 'Maturity Amount',
+            'confirmation' : 'Are you sure you want to upload this?',
+            }
         widgets = {
-            'name' : forms.TextInput(),
-            'policyID' : forms.Textarea(),
-            'dateOfCommencement' : forms.DateInput(attrs={'type':'date'}), 
+            'name' : forms.TextInput(attrs={'required':True}),
+            'policyID' : forms.Textarea(attrs={'style': 'height: 30px;width:150px;', 'required':True}),
+            'dateOfCommencement' : forms.DateInput(attrs={'type':'date', 'required':True}), 
             'dateOfMaturity' : forms.DateInput(attrs={'type':'date'}),
-            'expiryType' : forms.Select(choices=expiryChoices),
-            'insuranceType' : forms.Select(choices=insuranceChoices), 
-            'aadhar' : forms.FileInput(),
-            'installmentAmount' : forms.NumberInput(),
-            'maturityAmount' : forms.NumberInput(),
-            'confirmation' : forms.RadioSelect(choices=confirmationChoices),
+            'expiryType' : forms.Select(choices=expiryChoices, attrs={'required':True}),
+            'insuranceType' : forms.CheckboxSelectMultiple(choices=insuranceChoices, attrs={'required':True}), 
+            'aadhar' : forms.FileInput(attrs={'required':True}),
+            'installmentAmount' : forms.NumberInput(attrs={'required':True}),
+            'maturityAmount' : forms.NumberInput(attrs={'required':True}),
+            'confirmation' : forms.RadioSelect(choices=confirmationChoices, attrs={'required':True}),
         }

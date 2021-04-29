@@ -2,23 +2,59 @@
 {% block content %}
         <div class="container">
             <div>
-                <h1>Insurance Form</h1>
+                <p class="text-center display-3">Insurance Form</p>
                 <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <input class="btn btn-danger" type="submit" value="Upload">
+                    <!-- {{ form.as_p }} -->
+                    <table class="table table-dark">
+                        <tr>
+                            <td>Policy ID*:</td>
+                            <td>{{form.policyID}}</td>
+                        </tr>
+                        <tr>
+                            <td>Name*: </td>
+                            <td>{{form.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Commencement*: </td>
+                            <td>{{form.dateOfCommencement}} </td>
+                        </tr>
+                        <tr>
+                            <td>Date of Maturity*: </td>
+                            <td>{{form.dateOfMaturity}}</td>
+                        </tr>
+                        <tr>
+                            <td>Expiry Type*: </td>
+                            <td>{{form.expiryType}}</td>
+                        </tr>
+                        <tr>
+                            <td>Insurance Type*: </td>
+                            <td style=' list-style-type: none;'>{{form.insuranceType}} </td>
+                        </tr>
+                        <tr>
+                            <td>Upload Aadhar Card Photo*: </td>
+                            <td>{{form.aadhar}}</td>
+                        </tr>
+                        <tr>
+                            <td>Installment Amount*: </td>
+                            <td>{{form.installmentAmount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Maturity Amount*: </td>
+                            <td>{{form.maturityAmount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Are you sure you want to upload this? *</td>
+                            <td>{{form.confirmation}}</td>
+                        </tr>
+                        <tr>
+                            <td></td><td>
+                                <input class="btn btn-danger" type="submit" value="Upload">
+                                <a href="{% url 'insurance_view' %}" class="btn btn-success">View</a>
+                            </td>
+                        </tr>
+                    </table>
                 </form>
             </div>
-            <!-- <div class="row">
-                {% for x in insurance %}
-                <div class="col-sm-4">
-                    <div class="card m-2">
-                        <img src="{{ x.aadhar.url }}" alt=""
-                            class="card-img-top">
-                    </div>
-                </div>
-
-                {% endfor %}
-            </div> -->
         </div>
 {% endblock content %}
