@@ -3,26 +3,26 @@
 <div class="container">
     <div>
         <p class="text-center display-3">List of all the Insurances</p>
-        <div class="text-center"> 
-        <a href="{% url 'insurance_insert' %}" class="btn btn-primary ">Insert More</a>
+        <div class="text-center">
+            <a href="{% url 'insurance_insert' %}" class="btn btn-primary">Insert More</a>
         </div>
-    <br>
+        <br>
         <table class="table table-dark">
             <thead>
-            <tr>
-                <th class="px-2">Policy ID</th>
-                <th class="px-2">Name</th>
-                <th class="px-2">Installment Type</th>
-                <th class="px-2">Date of Commencement</th>
-                <th class="px-2">Expiry Type</th>
-                <th class="px-2">Installment Amount</th>
-                <th class="px-2">Maturity Amount</th>
-                <th class="px-2">Date of Maturity</th>
-                <th class="px-2">Aadhar Card</th>
-                <th class="px-2">Edit</th>
-                <th class="px-2">Delete</th>
-            </tr>
-        </thead>
+                <tr>
+                    <th class="px-2">Policy ID</th>
+                    <th class="px-2">Name</th>
+                    <th class="px-2">Installment Type</th>
+                    <th class="px-2">Date of Commencement</th>
+                    <th class="px-2">Expiry Type</th>
+                    <th class="px-2">Installment Amount</th>
+                    <th class="px-2">Maturity Amount</th>
+                    <th class="px-2">Date of Maturity</th>
+                    <th class="px-2">Aadhar Card</th>
+                    <th class="px-2">Edit</th>
+                    <th class="px-2">Delete</th>
+                </tr>
+            </thead>
             {% for x in insurances %}
             <tr>
                 <td>{{ x.policyID}}</td>
@@ -35,7 +35,7 @@
                 <td>{{ x.dateOfMaturity}}</td>
                 <td>
                     <img src="{{ x.aadhar.url }}" alt=""
-                        class="card-img-top" height="100px">
+                        class="card-img-top" height="100px"style="object-fit:contain">
                 </td>
                 <td>
                     <a href="{% url 'insurance_update' x.id %}" class="btn
