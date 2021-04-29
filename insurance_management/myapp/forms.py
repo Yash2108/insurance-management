@@ -33,11 +33,17 @@ class InsuranceForm(forms.ModelForm):
             'maturityAmount' : 'Maturity Amount',
             'confirmation' : 'Are you sure you want to upload this?',
             }
+
         widgets = {
             'name' : forms.TextInput(attrs={'required':True}),
             'policyID' : forms.Textarea(attrs={'style': 'height: 30px;width:150px;', 'required':True}),
-            'dateOfCommencement' : forms.DateInput(attrs={'type':'date', 'required':True}), 
-            'dateOfMaturity' : forms.DateInput(attrs={'type':'date'}),
+            'dateOfCommencement' : forms.DateInput(
+                attrs={
+                    'type':'date',
+                    'required':True, 
+                    'placeholder':'Pick a date'
+                    }),
+            'dateOfMaturity' : forms.DateInput(format=('%Y-%m-%d'),attrs={'type':'date', 'required':True}),
             'expiryType' : forms.Select(choices=expiryChoices, attrs={'required':True}),
             'insuranceType' : forms.CheckboxSelectMultiple(choices=insuranceChoices, attrs={'required':True}), 
             'aadhar' : forms.FileInput(attrs={'required':True}),
