@@ -37,7 +37,7 @@ class InsuranceUpdate(UpdateView):
     form=InsuranceForm()
 
     def get_success_url(self):
-        return reverse_lazy('insurance_insert')
+        return reverse_lazy('insurance_view')
 
 class InsuranceDelete(DeleteView):
     model = Insurances
