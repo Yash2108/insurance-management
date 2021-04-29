@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from .forms import InsuranceForm
+from .forms import *
 from .models import Insurances
 from django.views.generic import FormView, ListView, UpdateView, DeleteView
 from django.http import HttpResponse, JsonResponse
@@ -35,9 +35,24 @@ class InsuranceUpdate(UpdateView):
     template_name = 'myapp/insuranceUpdate.html'
     fields = '__all__'
     form=InsuranceForm()
-
-    def get_success_url(self):
-        return reverse_lazy('insurance_view')
+    success_url = "/insurance/"
+    # def get(self, request, pk):
+    #     form=InsuranceForm()
+    #     insurance=Insurances.objects.filter(id=pk)
+    #     return render(request, 'myapp/insuranceUpdate.html', context={'insurance':insurance[0],'form':form})
+    # def get_context_data(self, **kwargs): 
+    #     context = super(InsuranceUpdate, self).get_context_data(**kwargs) 
+    #     context['policyID'] = self.get_object().policyID 
+    #     context['name'] = self.get_object().name 
+    #     context['insuranceType'] = self.get_object().insuranceType
+    #     context['dateOfCommencement'] = self.get_object().dateOfCommencement 
+    #     context['expiryType'] = self.get_object().expiryType 
+    #     context['installmentAmount'] = self.get_object().installmentAmount 
+    #     context['maturityAmount'] = self.get_object().maturityAmount 
+    #     context['dateOfMaturity'] = self.get_object().dateOfMaturity 
+    #     context['aadhar'] = self.get_object().aadhar 
+    #     context['confirmation'] = self.get_object().confirmation 
+    #     return context
 
 class InsuranceDelete(DeleteView):
     model = Insurances

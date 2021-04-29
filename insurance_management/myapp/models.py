@@ -16,16 +16,10 @@ class Insurances(models.Model):
     class Meta:
         db_table = 'myapp_insurance'
 
-
-    
-
 # from django.db import models
-
-
 # class Insurances(models.Model):
 #     photo = models.ImageField(upload_to='')
 #     date = models.DateField()
-
 #     class Meta:
 #         managed = False
 #         db_table = 'insurances'
