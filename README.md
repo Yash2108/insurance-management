@@ -2,8 +2,6 @@
 
 This project will implement CRUD Operations.
 
-
-| ----------------- |:-------------------: |
 | Author            | Yash Jain            |
 | Enrollment Number | BT18GCS008           |
 | Section           | C1                   |
