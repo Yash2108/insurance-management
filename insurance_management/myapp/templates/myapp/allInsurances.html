@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+{% block content %}
+<div class="container">
+    <div>
+        <h1>List of all the Insurances</h1>
+        <table>
+            {% for x in insurances %}
+            <tr>
+                <td>{{ x.policyID}}</td>
+                <td>{{ x.name}}</td>
+                <td>{{ x.insuranceType}}</td>
+                <td>{{ x.dateOfCommencement}}</td>
+                <td>{{ x.expityType}}</td>
+                <td>{{ x.installmentAmount}}</td>
+                <td>{{ x.maturityAmount}}</td>
+                <td>{{ x.dateOfMaturity}}</td>
+                <td>
+                    <img src="{{ x.aadhar.url }}" alt=""
+                            class="card-img-top" height="100px">
+                </td>
+                <td>
+                    <a href="{% url 'insurance_update' x.id %}" class="btn txt-secondary px-0">
+                        <i class="fas fa-edit fa-lg"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'insurance_delete' x.id %}" class="btn txt-secondary px-0">
+                        <i class="fas fa-trash fa-lg"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock content %}
