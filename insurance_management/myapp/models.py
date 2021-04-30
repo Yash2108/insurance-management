@@ -1,6 +1,4 @@
 from django.db import models
-import datetime
-from django.utils import timezone
 
 class Insurances(models.Model):
     policyID = models.CharField(db_column='policyID', max_length=30)

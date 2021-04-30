@@ -32,8 +32,8 @@ class AllInsurances(ListView):
 class InsuranceUpdate(UpdateView):
     model = Insurances
     template_name = 'myapp/insuranceUpdate.html'
-    fields = '__all__'
-    form=InsuranceForm()
+    # fields = '__all__'
+    form_class=InsuranceForm
     success_url = "/insurance/"
 
 class InsuranceDelete(DeleteView):
