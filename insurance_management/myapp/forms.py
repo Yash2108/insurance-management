@@ -20,7 +20,7 @@ class InsuranceForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'name' : forms.TextInput(attrs={'required':True}),
-            'policyID' : forms.Textarea(attrs={'style': 'height: 30px;width:150px;', 'required':True}),
+            'policyID' : forms.NumberInput(),
             'dateOfCommencement' : forms.DateInput(
                 attrs={
                     'type':'date',
@@ -29,9 +29,10 @@ class InsuranceForm(forms.ModelForm):
                     }),
             'dateOfMaturity' : forms.DateInput(format=('%Y-%m-%d'),attrs={'type':'date', 'required':True}),
             'expiryType' : forms.Select(choices=expiryChoices, attrs={'required':True}),
-            'insuranceType' : forms.CheckboxSelectMultiple(choices=insuranceChoices), 
+            'insuranceType' : forms.RadioSelect(choices=insuranceChoices), 
             'aadhar' : forms.FileInput(attrs={'required':True}),
             'installmentAmount' : forms.NumberInput(attrs={'required':True}),
             'maturityAmount' : forms.NumberInput(attrs={'required':True}),
-            'confirmation' : forms.RadioSelect(choices=confirmationChoices, attrs={'required':True}),
+            'confirmation' : forms.CheckboxInput( attrs={'required':True}),
+            'comments': forms.Textarea(attrs={'style': 'height: 60px;width:150px;'})
         }

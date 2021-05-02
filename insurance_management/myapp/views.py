@@ -12,9 +12,15 @@ class InsuranceInsert(FormView):
     def post(self, request):
         form = InsuranceForm(request.POST, request.FILES)
         if form.is_valid():
+            # if request.POST['confirmation'] == 'on':
             form.save()
-        else:
-            return HttpResponse(form.errors['date'])
+            
+            # print((request.POST['confirmation']))
+            # insType = form.save(commit=False)
+            # # print()
+            # insType.insuranceType.set(request.POST['insuranceType'])
+            # insType.save()
+
         return redirect('insurance_insert')
 
     def get(self, request):
@@ -27,7 +33,11 @@ class AllInsurances(ListView):
     def get(self, request):
         form = InsuranceForm()
         insurance = Insurances.objects.all()
-        return render(request, 'myapp/allInsurances.html', context={'insurances':insurance, 'form': form})
+        return render(request, 'myapp/allInsurances.html', context={
+            'insurances':insurance, 
+            'form': form, 
+            'expiry':expiryChoices,
+            'insuranceChoices': insuranceChoices})
 
 class InsuranceUpdate(UpdateView):
     model = Insurances
@@ -35,6 +45,8 @@ class InsuranceUpdate(UpdateView):
     # fields = '__all__'
     form_class=InsuranceForm
     success_url = "/insurance/"
+    # def get_object(self):
+    #     return get_object(Insurances, id=self.request.GET.get('pk'))
 
 class InsuranceDelete(DeleteView):
     model = Insurances

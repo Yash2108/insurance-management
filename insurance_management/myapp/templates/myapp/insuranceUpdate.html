@@ -27,11 +27,16 @@
         </tr>
         <tr>
             <td>Insurance Type*: </td>
-            <td>{{form.insuranceType}} </td>
+            <td>{{form.insuranceType.0}} 
+            {{form.insuranceType.1}} 
+            {{form.insuranceType.2}} </td>
         </tr>
         <tr>
             <td>Upload Aadhar Card Photo*: </td>
-            <td>{{form.aadhar}}</td>
+            <td>
+                <img src="{{ form.instance.aadhar.url }}" alt="">
+                {{form.aadhar}}
+            </td>
         </tr>
         <tr>
             <td>Installment Amount*: </td>
@@ -42,8 +47,12 @@
             <td>{{form.maturityAmount}}</td>
         </tr>
         <tr>
-            <td>Are you sure you want to upload this? *</td>
-            <td>{{form.confirmation}}</td>
+            <td>Any Comments?</td>
+            <td>{{ form.comments }}</td>
+        </tr>
+        <tr>
+            <td>Are you sure you want to update this? *</td>
+            <td>{{form.confirmation}} Yes</td>
         </tr>
         <tr>
             <td></td><td>
