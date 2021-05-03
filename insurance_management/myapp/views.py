@@ -12,15 +12,7 @@ class InsuranceInsert(FormView):
     def post(self, request):
         form = InsuranceForm(request.POST, request.FILES)
         if form.is_valid():
-            # if request.POST['confirmation'] == 'on':
             form.save()
-            
-            # print((request.POST['confirmation']))
-            # insType = form.save(commit=False)
-            # # print()
-            # insType.insuranceType.set(request.POST['insuranceType'])
-            # insType.save()
-
         return redirect('insurance_insert')
 
     def get(self, request):
@@ -42,11 +34,8 @@ class AllInsurances(ListView):
 class InsuranceUpdate(UpdateView):
     model = Insurances
     template_name = 'myapp/insuranceUpdate.html'
-    # fields = '__all__'
     form_class=InsuranceForm
     success_url = "/insurance/"
-    # def get_object(self):
-    #     return get_object(Insurances, id=self.request.GET.get('pk'))
 
 class InsuranceDelete(DeleteView):
     model = Insurances

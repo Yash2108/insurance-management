@@ -10,9 +10,6 @@ insuranceChoices = [
     ('car', 'Car'),
     ('home', 'Home'),
     ('life', 'Life')]
-confirmationChoices = [
-    (True, 'Yes'),
-    (False, 'No')]
 
 class InsuranceForm(forms.ModelForm):
     class Meta:
@@ -21,18 +18,13 @@ class InsuranceForm(forms.ModelForm):
         widgets = {
             'name' : forms.TextInput(attrs={'required':True}),
             'policyID' : forms.NumberInput(),
-            'dateOfCommencement' : forms.DateInput(
-                attrs={
-                    'type':'date',
-                    'required':True, 
-                    'placeholder':'Pick a date'
-                    }),
-            'dateOfMaturity' : forms.DateInput(format=('%Y-%m-%d'),attrs={'type':'date', 'required':True}),
+            'dateOfCommencement' : forms.DateInput(attrs={'type':'date','required':True}),
+            'dateOfMaturity' : forms.DateInput(attrs={'type':'date', 'required':True}),
             'expiryType' : forms.Select(choices=expiryChoices, attrs={'required':True}),
             'insuranceType' : forms.RadioSelect(choices=insuranceChoices), 
             'aadhar' : forms.FileInput(attrs={'required':True}),
             'installmentAmount' : forms.NumberInput(attrs={'required':True}),
             'maturityAmount' : forms.NumberInput(attrs={'required':True}),
             'confirmation' : forms.CheckboxInput( attrs={'required':True}),
-            'comments': forms.Textarea(attrs={'style': 'height: 60px;width:150px;'})
+            'comments': forms.Textarea(attrs={'style': 'height: 60px;width:150px;', 'required':False})
         }
